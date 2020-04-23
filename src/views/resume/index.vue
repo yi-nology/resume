@@ -16,7 +16,16 @@
                     <img alt="" class="avatar width-full rounded-2" height="200"
                          src="http://murphyyi.oss-cn-beijing.aliyuncs.com/touxiang.png" width="200">
                 </div>
-
+                <p><span>年龄：23<br/>
+		手机：18600321498<br/>
+		邮箱：zy84338719@hotmail.com<br/>
+		户籍：北京<br/>
+		目前状态：应届生<br/>
+		所在地点：北京<br/>
+                    <!-- 工作年限： 	5年<br/> -->
+		期望职位：研发/测试<br/>
+		</span>
+                </p>
             </div>
             <!--end bio-->
 
@@ -49,7 +58,6 @@
                 <li id="skill7" class="s60"><span>关系数据库（MySQL、MariaDB）</span></li>
                 <li id="skill8" class="s30"><span>非关系数据库（Redis、Mangodb）</span></li>
                 <li id="skill9" class="s40"><span>docker,docker-compose,k8s,docker-swarm</span></li>
-
             </ul>
             <!-- end skills -->
 
@@ -193,7 +201,7 @@
 </template>
 
 <script lang="ts">
-    import { Component, Prop, Vue } from 'vue-property-decorator';
+    import {Component, Prop, Vue} from 'vue-property-decorator';
     import './style.css';
     // import './print.css';
     // import './prettyPhoto.css'
