@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="resume">
 
         <!--STICKER-->
         <div id="sticker"></div>
@@ -16,7 +16,7 @@
                     <img alt="" class="avatar width-full rounded-2" height="200"
                          src="http://murphyyi.oss-cn-beijing.aliyuncs.com/touxiang.png" width="200">
                 </div>
-                <p><span>年龄：23<br/>
+                <p><span>年龄：{{age}}<br/>
 		手机：18600321498<br/>
 		邮箱：zy84338719@hotmail.com<br/>
 		户籍：北京<br/>
@@ -203,14 +203,34 @@
 <script lang="ts">
     import {Component, Prop, Vue} from 'vue-property-decorator';
     import './style.css';
+    import HelloWorld from "@/components/HelloWorld.vue";
     // import './print.css';
     // import './prettyPhoto.css'
 
     @Component
     export default class Resume extends Vue {
         @Prop() private msg!: string;
+        @Prop() private age!: string;
     }
 </script>
 
 <style>
+    #resume {
+        /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /*text-align: center;*/
+        color: #2c3e50;
+        font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        line-height: 1.2em;
+        background-color: #f3f3f3;
+        background-image: url(../../assets/soft_wallpaper.png);
+        background-repeat: repeat;
+        background-attachment: fixed;
+        background-position: 0px 0px;
+        color: #444;
+        height: 100%;
+        width: auto;
+        /*margin-top: 60px;*/
+    }
 </style>
