@@ -7,7 +7,7 @@
         <div id="wrapper">
 
             <!--BIO TITLE-->
-            <h2 id="titleName" class="sectionHead">张易</h2>
+            <h2 id="titleName" class="sectionHead">{{user.name}}</h2>
             <!-- <a href='./张易-19年.pdf' download="张易-19应届-计算机.pdf">下载</a> -->
             <!--BIO-->
             <!--BIO PARAGRAPH-->
@@ -16,7 +16,7 @@
                     <img alt="" class="avatar width-full rounded-2" height="200"
                          v-bind:src="user.photo" width="200">
                 </div>
-                <p><span>年龄：23
+                <p><span>年龄：{{user.birthday}}
                     <br/>手机：{{user.phone}}
                     <br/>邮箱：{{user.email}}
                     <br/>户籍：{{user.native}}
@@ -166,7 +166,7 @@
             <!--RECOMMENDATIONS-->
             <ul id="recommends" style="display: block;">
                 <p>
-                    <font><font>“自己是一名喜欢折腾的用户，玩过黑苹果，搞过树莓派，DIY智能家居。性格有点内向，属于慢热型选手，爱参加开发者大会，喜欢挑战。乐观积极，热爱生活，酷爱旅游，思维活奋的小伙子。”</font></font>
+                    <font><font>“{{user.describe}}”</font></font>
                 </p>
             </ul>
             <!-- <ul id="recommends" style="display: block;">
@@ -228,7 +228,8 @@
                     city: "北京",
                     keyword: "w",
                     watch: 20,
-                    expect: "后端研发"
+                    expect: "后端研发",
+                    year:8
                 }
 
             }
