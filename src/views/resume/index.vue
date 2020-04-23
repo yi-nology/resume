@@ -14,19 +14,21 @@
             <div id="aboutme">
                 <div class="imgwap">
                     <img alt="" class="avatar width-full rounded-2" height="200"
-                         src="http://murphyyi.oss-cn-beijing.aliyuncs.com/touxiang.png" width="200">
+                         v-bind:src="user.photo" width="200">
                 </div>
-                <p><span>年龄：{{age}}<br/>
-		手机：18600321498<br/>
-		邮箱：zy84338719@hotmail.com<br/>
-		户籍：北京<br/>
-		目前状态：应届生<br/>
-		所在地点：北京<br/>
-                    <!-- 工作年限： 	5年<br/> -->
-		期望职位：研发/测试<br/>
-		</span>
+                <p><span>年龄：23
+                    <br/>手机：{{user.phone}}
+                    <br/>邮箱：{{user.email}}
+                    <br/>户籍：{{user.native}}
+                    <br/>目前状态：{{user.status}}
+                    <br/>所在地点：{{user.city}}
+                    <br/>工作年限：{{user.year}} 年
+                    <br/>期望职位：{{user.expect}}
+                    <br/>
+                </span>
                 </p>
             </div>
+            <!--            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADIEAAAAADYoy0BAAADW0lEQVR4nOzd0WrcvBpA0ZND3/+V+997oELok7MH1rpNxp5mI7Ary/rzv5f9/fvvn//8/Pv3nz/fPf70+ab9/93TsSJIjCAxgsQIEiNIjCAxH1fZu9fxyxMsrvOnj/+0uq84vS869Ty+ERIjSIwgMYLECBIjSIwgMcv5kN35gNP5iNXxpu8jTu8zpv8+RkiMIDGCxAgSI0iMIDGCxLz+XNbK6jp9977j9HxvM0JiBIkRJEaQGEFiBIkRJCZ3HzKtdp+xYoTECBIjSIwgMYLECBIjSMzyPuS3r+NP14nfnh+Z/vsYITGCxAgSI0iMIDGCxAgS83Ef8vb7oXbtru+Yfh/W7b+PERIjSIwgMYLECBIjSIwgMX9+e77j6dvWlU8zQmIEiREkRpAYQWIEiREkZvne3un//7+9zvz0+/72v98IiREkRpAYQWIEiREkRpCY7f1Dbs9X7J5v+vefbs/HPD9vhMQIEiNIjCAxgsQIEiNIzPE+hrf3I5++j1kd//b8x+r4RkiMIDGCxAgSI0iMIDGCxPycXoe/vc/g6ffZ9fZ8jxESI0iMIDGCxAgSI0iMIDEf9yHjJ7j8HNPb+7GvnN4HGSExgsQIEiNIjCAxgsQIEnP8XNbHAYfnC26f//b8ze7PjZAYQWIEiREkRpAYQWIEiRlfp376+ytv72/y9nNiRkiMIDGCxAgSI0iMIDGCxCz3U991+zmsp+n3Ye2afk7MCIkRJEaQGEFiBIkRJEaQmOV9yO3nkG4/xzW9/mP1+d1/n+ey4gSJESRGkBhBYgSJESTm+jr15Re4vD/66XzF6fl3j2+ExAgSI0iMIDGCxAgSI0jMy6st7q8nmX5/1u39UZ6MkBhBYgSJESRGkBhBYgSJ+Xgua3p+ZHWdPv1c1NP0+o/Tz1un/mUEiREkRpAYQWIEiREkZnt9yMrt6/bddeu73396fsP+IV9OkBhBYgSJESRGkBhBYsbfl/W20/dpPd3ef33FCIkRJEaQGEFiBIkRJEaQmK+7Dzl9Dmv3/VW7n1/x3t4vI0iMIDGCxAgSI0iMIDHj+6l/nODyPobT7+WdXoe++/2MkBhBYgSJESRGkBhBYgSJ+fX3ZU2/3+q22/u5GyExgsQIEiNIjCAxgsQIEvNfAAAA///9Z/GLf9fGEQAAAABJRU5ErkJggg==">-->
             <!--end bio-->
 
             <div class="clear"></div>
@@ -201,16 +203,97 @@
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Vue} from 'vue-property-decorator';
     import './style.css';
-    import HelloWorld from "@/components/HelloWorld.vue";
     // import './print.css';
     // import './prettyPhoto.css'
+    import {getInfoByKeyword} from '@/api/resume'
+    // import da from "element-ui/src/locale/lang/da";
+    export default {
+        // 数据
+        data() {
+            return {
+                user: {
+                    code: "",
+                    name: "张易",
+                    phone: "110",
+                    describe: "5",
+                    sex: false,
+                    status: "离职",
+                    birthday: "2020-04-22T13:21:01+08:00",
+                    photo: "7",
+                    email: "zy8338719@hotmail.com",
+                    wechat: "murphyyi",
+                    github: "https://github.com/zy84338719",
+                    native: "北京",
+                    city: "北京",
+                    keyword: "w",
+                    watch: 20,
+                    expect: "后端研发"
+                }
 
-    @Component
-    export default class Resume extends Vue {
-        @Prop() private msg!: string;
-        @Prop() private age!: string;
+            }
+        },
+
+        // // 计算属性
+        // computed: {}
+        //     // 侦听器
+        //     | undefined
+        // // 侦听器
+        // watch: {}
+        //     // 生命周期钩子
+        //     | undefined
+        //
+        // 生命周期钩子
+        // beforeCreate() {
+        // },
+        //
+        // // eslint-disable-next-line @typescript-eslint/no-empty-function
+        created() {
+            this.getInfo()
+        },
+        //
+        // // eslint-disable-next-line @typescript-eslint/no-empty-function
+        // beforeMount() {
+        // }
+        //
+        // // eslint-disable-next-line @typescript-eslint/no-empty-function
+        // mounted() {
+        // }
+        //
+        // // eslint-disable-next-line @typescript-eslint/no-empty-function
+        // beforeUpdate() {
+        // }
+        //
+        // // eslint-disable-next-line @typescript-eslint/no-empty-function
+        // updated() {
+        // }
+        //
+        // // eslint-disable-next-line @typescript-eslint/no-empty-function
+        // activated() {
+        // }
+        //
+        // // eslint-disable-next-line @typescript-eslint/no-empty-function
+        // deactivated() {
+        // }
+        //
+        // // eslint-disable-next-line @typescript-eslint/no-empty-function
+        // beforeDestroy() {
+        // }
+        //
+        // // eslint-disable-next-line @typescript-eslint/no-empty-function
+        // destroyed() {
+        // }
+
+        // 事件处理方法
+        methods: {
+            getInfo(): void {
+                getInfoByKeyword({keyword: "w"}).then(
+                    (data: object) => {
+                        this.user = data.user
+                    }
+                )
+            }
+        }
     }
 </script>
 
