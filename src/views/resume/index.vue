@@ -169,8 +169,30 @@
     // import './print.css';
     // import './prettyPhoto.css'
     import {getInfoByKeyword} from '@/api/resume'
-    export default {
+
+    import {Component, Prop, Vue} from 'vue-property-decorator'
+
+    @Component({
+        props: {
+            user: Object,
+            works: Object,
+            education: Array,
+            skill: Array,
+            company: Array,
+            honor: Array
+        }
+    })
+    export default class App extends Vue {
+        private user?: Record<string, any>;
+        private works?: Record<string, any>;
+        private education?: Record<string, any>;
+
         // 数据
+        private skill?: Record<string, any>;
+        private company?: Record<string, any>;
+        private honor?: Record<string, any>;
+
+
         data() {
             return {
                 user: {
@@ -220,7 +242,7 @@
                         },
                         event: null
                     }
-                ],honor:[
+                ], honor: [
                     {
                         "code": "w",
                         "name": "网易云课堂  获得python数据分析师 微专业优秀证书",
@@ -229,7 +251,7 @@
                 ]
 
             }
-        },
+        }
 
         // // 计算属性
         // computed: {}
@@ -245,17 +267,19 @@
         // },
         //
         // // eslint-disable-next-line @typescript-eslint/no-empty-function
-        created() {
-            this.getInfo()
-        },
+        // created() {
+        //     (this as any).getInfo()
+        // }
+
         //
         // // eslint-disable-next-line @typescript-eslint/no-empty-function
         // beforeMount() {
         // }
         //
         // // eslint-disable-next-line @typescript-eslint/no-empty-function
-        // mounted() {
-        // }
+        mounted() {
+            this.getInfo()
+        }
         //
         // // eslint-disable-next-line @typescript-eslint/no-empty-function
         // beforeUpdate() {
@@ -282,20 +306,20 @@
         // }
 
         // 事件处理方法
-        methods: {
-            getInfo(): void {
-                getInfoByKeyword({keyword: "w"}).then(
-                    (data: object) => {
-                        this.user = data.user
-                        this.works = data.works
-                        this.education = data.education
-                        this.skill = data.skill
-                        this.company = data.company
-                        this.honor = data.honor
-                    }
-                )
-            }
+
+        getInfo(): void {
+            getInfoByKeyword({keyword: "w"}).then(
+                (data: Data) => {
+                    this.user = data.user
+                    this.works = data.works
+                    this.education = data.education
+                    this.skill = data.skill
+                    this.company = data.company
+                    this.honor = data.honor
+                }
+            )
         }
+
     }
 </script>
 
