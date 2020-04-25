@@ -8,7 +8,6 @@ interface Data {
 }
 
 interface User {
-    code: string,
     name: string,
     phone: string,
     describe: string,
