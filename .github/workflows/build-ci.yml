@@ -17,6 +17,7 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: build # The folder the action should deploy.
+             ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # 使用刚新建的secret
+             BRANCH: gh-pages # 存放产物的分支名称
+             FOLDER: dist # 存放build后产物的目录
+             BUILD_SCRIPT: npm install && npm run build # 执行的命令
