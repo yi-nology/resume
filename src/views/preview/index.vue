@@ -16,7 +16,7 @@
                     <img alt="" class="avatar width-full rounded-2" height="200"
                          v-bind:src="user.photo" width="200">
                 </div>
-                <p><span>年龄：{{user.birthday}} 岁
+                <p><span>年龄：{{user.age}} 岁
                     <br/>手机：{{user.phone}}
                     <br/>邮箱：{{user.email}}
                     <br/>户籍：{{user.native}}
@@ -216,7 +216,7 @@
                     describe: "5",
                     sex: false,
                     status: "离职",
-                    birthday: "2020-04-22T13:21:01+08:00",
+                    age: "13",
                     photo: "7",
                     email: "zy8338719@hotmail.com",
                     wechat: "murphyyi",
