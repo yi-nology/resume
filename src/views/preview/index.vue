@@ -80,10 +80,10 @@
                         <h5>{{item.info.start}}-{{item.info.end}}</h5>
                     </div>
                     <div class="details" v-for="(i,iw) in item.event" :key="iw">
-                        <h3>经历</h3>
+                        <h3>{{i.name}}({{i.start_time}}-{{i.end_time}})</h3>
+                        <h3>项目简介：</h3>
                         <div>{{i.describe}}</div>
-                        <br>
-                        <p>成长</p>
+                        <p><b>项目收获：</b></p>
                         <div>{{i.harvest}}</div>
                         <br>
                     </div>
