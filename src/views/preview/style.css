@@ -513,8 +513,15 @@ ul#recommends li .details {
     float: left;
     width: 40%
 }
-
-ul#jobs li p,
+/*ul#jobs li p {*/
+/*    float: right;*/
+/*    width: 20%;*/
+/*}*/
+/*ul#jobs li div {*/
+/*    float: right;*/
+/*    width: 70%;*/
+/*    margin-bottom: 25px;*/
+/*}*/
 ul#schools li > p,
 ul#recommends li > p {
     float: right;
@@ -641,7 +648,7 @@ ul#recommends li > p {
     width: 100%
 }
 
-#resume.respond ul#jobs li p,
+/*#resume.respond ul#jobs li p,*/
 #resume.respond ul#schools li > p,
 #resume.respond ul#recommends li > p {
     float: none;

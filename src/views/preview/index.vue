@@ -79,12 +79,12 @@
                         <!-- <h4>江苏镇江</h4> -->
                         <h5>{{item.info.start}}-{{item.info.end}}</h5>
                     </div>
-                    <div v-for="(i,iw) in item.event" :key="iw">
+                    <div class="details" v-for="(i,iw) in item.event" :key="iw">
                         <h3>经历</h3>
-                        {{i.describe}}
+                        <div>{{i.describe}}</div>
                         <br>
-                        <p><a>成长</a></p>
-                        {{i.harvest}}
+                        <p>成长</p>
+                        <div>{{i.harvest}}</div>
                         <br>
                     </div>
                     <!-- <p>	在职期间负责mysql查表操作。</p>	 -->
