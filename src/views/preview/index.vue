@@ -28,7 +28,7 @@
                 </span>
                 </p>
             </div>
-            <el-image id="qrcord" :src="qrcode" alt="二维码"  width="120" />
+            <img id="qrcord" :src="qrcode" alt="二维码"  width="120" />
 
             <!--end bio-->
 
