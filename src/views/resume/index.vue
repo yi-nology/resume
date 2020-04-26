@@ -28,7 +28,8 @@
                 </span>
                 </p>
             </div>
-            <!--            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADIEAAAAADYoy0BAAADW0lEQVR4nOzd0WrcvBpA0ZND3/+V+997oELok7MH1rpNxp5mI7Ary/rzv5f9/fvvn//8/Pv3nz/fPf70+ab9/93TsSJIjCAxgsQIEiNIjCAxH1fZu9fxyxMsrvOnj/+0uq84vS869Ty+ERIjSIwgMYLECBIjSIwgMcv5kN35gNP5iNXxpu8jTu8zpv8+RkiMIDGCxAgSI0iMIDGCxLz+XNbK6jp9977j9HxvM0JiBIkRJEaQGEFiBIkRJCZ3HzKtdp+xYoTECBIjSIwgMYLECBIjSMzyPuS3r+NP14nfnh+Z/vsYITGCxAgSI0iMIDGCxAgS83Ef8vb7oXbtru+Yfh/W7b+PERIjSIwgMYLECBIjSIwgMX9+e77j6dvWlU8zQmIEiREkRpAYQWIEiREkZvne3un//7+9zvz0+/72v98IiREkRpAYQWIEiREkRpCY7f1Dbs9X7J5v+vefbs/HPD9vhMQIEiNIjCAxgsQIEiNIzPE+hrf3I5++j1kd//b8x+r4RkiMIDGCxAgSI0iMIDGCxPycXoe/vc/g6ffZ9fZ8jxESI0iMIDGCxAgSI0iMIDEf9yHjJ7j8HNPb+7GvnN4HGSExgsQIEiNIjCAxgsQIEnP8XNbHAYfnC26f//b8ze7PjZAYQWIEiREkRpAYQWIEiRlfp376+ytv72/y9nNiRkiMIDGCxAgSI0iMIDGCxCz3U991+zmsp+n3Ye2afk7MCIkRJEaQGEFiBIkRJEaQmOV9yO3nkG4/xzW9/mP1+d1/n+ey4gSJESRGkBhBYgSJESTm+jr15Re4vD/66XzF6fl3j2+ExAgSI0iMIDGCxAgSI0jMy6st7q8nmX5/1u39UZ6MkBhBYgSJESRGkBhBYgSJ+Xgua3p+ZHWdPv1c1NP0+o/Tz1un/mUEiREkRpAYQWIEiREkZnt9yMrt6/bddeu73396fsP+IV9OkBhBYgSJESRGkBhBYsbfl/W20/dpPd3ef33FCIkRJEaQGEFiBIkRJEaQmK+7Dzl9Dmv3/VW7n1/x3t4vI0iMIDGCxAgSI0iMIDHj+6l/nODyPobT7+WdXoe++/2MkBhBYgSJESRGkBhBYgSJ+fX3ZU2/3+q22/u5GyExgsQIEiNIjCAxgsQIEvNfAAAA///9Z/GLf9fGEQAAAABJRU5ErkJggg==">-->
+            <el-image id="qrcord" :src="qrcode" alt="二维码"  width="120" />
+
             <!--end bio-->
 
 
@@ -169,10 +170,9 @@
     import './style.css';
     // import './print.css';
     // import './prettyPhoto.css'
-    import {getInfoByKeyword} from '@/api/resume'
+    import {getInfoByKeyword,createQrcode} from '@/api/resume'
 
     import {Component, Prop, Vue} from 'vue-property-decorator'
-
     @Component({
         props: {
             user: Object,
@@ -180,19 +180,21 @@
             education: Array,
             skill: Array,
             company: Array,
-            honor: Array
+            honor: Array,
+            qrcode: String
         }
     })
+
     export default class App extends Vue {
-        private user?: Record<string, any>;
-        private works?: Record<string, any>;
-        private education?: Record<string, any>;
+        @Prop() private user?: Record<string, any>;
+        @Prop() private works?: Record<string, any>;
+        @Prop() private education?: Record<string, any>;
 
         // 数据
-        private skill?: Record<string, any>;
-        private company?: Record<string, any>;
-        private honor?: Record<string, any>;
-
+        @Prop() private skill?: Record<string, any>;
+        @Prop() private company?: Record<string, any>;
+        @Prop() private honor?: Record<string, any>;
+        @Prop() private qrcode?: string;
 
         data() {
             return {
@@ -227,14 +229,15 @@
                     url: "http://murphyyi.oss-cn-beijing.aliyuncs.com/1.png",
                     photo: "http://murphyyi.oss-cn-beijing.aliyuncs.com/1.png"
                 }
-                ]
-                , skill: [
+                ],
+                skill: [
                     {
                         name: "",
                         sequence: 1,
                         percentage: 70
                     }
-                ], company: [
+                ],
+                company: [
                     {
                         info: {
                             "code": "",
@@ -243,14 +246,15 @@
                         },
                         event: null
                     }
-                ], honor: [
+                ],
+                honor: [
                     {
                         "code": "w",
                         "name": "网易云课堂  获得python数据分析师 微专业优秀证书",
                         "url": "https://murphyyi.oss-cn-beijing.aliyuncs.com/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82.jpg"
                     },
-                ]
-
+                ],
+                qrcode: "",
             }
         }
 
@@ -280,7 +284,9 @@
         // // eslint-disable-next-line @typescript-eslint/no-empty-function
         mounted() {
             this.getInfo()
+            this.getQrcode()
         }
+
         //
         // // eslint-disable-next-line @typescript-eslint/no-empty-function
         // beforeUpdate() {
@@ -309,7 +315,8 @@
         // 事件处理方法
 
         getInfo(): void {
-            getInfoByKeyword({keyword: "w"}).then(
+            const {keyword} = this.$route.params;
+            getInfoByKeyword({keyword}).then(
                 (data: Data) => {
                     this.user = data.user
                     this.works = data.works
@@ -319,6 +326,15 @@
                     this.honor = data.honor
                 }
             )
+        }
+        getQrcode(): void {
+            const {keyword} = this.$route.params;
+            // let url = "http://localhost:10080/"+keyword
+
+            createQrcode({keyword:window.location.href}).then((data: string)=>{
+
+                this.qrcode="data:image/png;base64,"+data
+            })
         }
 
     }

@@ -1,11 +1,17 @@
 import request from '../plugin/axios'
-export function getInfoByKeyword (data: any): any {
+
+function getUri(): any {
+    return '/v1/resume/'
+}
+
+export function getInfoByKeyword(data: any): any {
     return request({
-        url: '/v1/resume/getInfoByKeyword',
+        url: getUri()+'/getInfoByKeyword',
         method: 'get',
         params: data
     })
 }
+
 // export function getInfoByCode (data:any):any {
 //     return request({
 //         url:'/v1/resume/getInfoByCode',
@@ -94,10 +100,12 @@ export function getInfoByKeyword (data: any): any {
 //     })
 // }
 //
-// export function createQrcode (data:any):any {
-//     return request({
-//         url: '/createQrcode',
-//         method: 'get',
-//         data
-//     })
-// }
+
+export function createQrcode(data: any): any {
+    return request({
+        url: getUri() + 'createQrcode',
+        method: 'post',
+        data
+    })
+}
+

@@ -223,6 +223,12 @@ h2#contact:before {
     background: #222;
 }
 
+#qrcord {
+    position: absolute;
+    right: 50px;
+    top: 50px;
+}
+
 #bio a.selectedWork {
     visibility: hidden;
     padding: 0;
@@ -750,3 +756,6 @@ body.respond #copyright {
 body.respond #messageSent {
     margin-top: 20px;
 }
+
+
+
