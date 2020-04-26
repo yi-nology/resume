@@ -386,75 +386,9 @@ ul#skills {
     margin: 0;
     width: 100%;
     overflow: hidden;
-    background: url(../../assets/loading.gif) no-repeat center 30%;
-}
-
-ul#skills.ready {
     background: none;
 }
 
-ul#skills li {
-    position: relative;
-    right: 100%;
-    background-color: #444;
-    color: #fff;
-    font: bold 9px/20px sans-serif;
-    letter-spacing: 1px;
-    margin-bottom: 3px;
-    padding: 3px 1.1428571428571428% 0;
-    z-index: 1;
-}
-
-ul#skills li:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 5px;
-    line-height: 26px;
-    width: 50px;
-    text-align: right;
-    color: #aaa;
-}
-
-ul#skills li.s100:after {
-    content: "100%";
-}
-
-ul#skills li.s90:after {
-    content: "90%";
-}
-
-ul#skills li.s80:after {
-    content: "80%";
-}
-
-ul#skills li.s70:after {
-    content: "70%";
-}
-
-ul#skills li.s60:after {
-    content: "60%";
-}
-
-ul#skills li.s50:after {
-    content: "50%";
-}
-
-ul#skills li.s40:after {
-    content: "40%";
-}
-
-ul#skills li.s30:after {
-    content: "30%";
-}
-
-ul#skills li.s20:after {
-    content: "20%";
-}
-
-ul#skills li.s10:after {
-    content: "10%";
-}
 
 ul#skills li span {
     display: none;
@@ -464,44 +398,8 @@ ul#skills li:hover {
     background: #222;
 }
 
-li.s100 {
-    width: 97.71428571428571%;
-}
-
-li.s90 {
-    width: 87.71428571428571%;
-}
-
-li.s80 {
+li.def {
     width: 77.71428571428571%;
-}
-
-li.s70 {
-    width: 67.71428571428571%;
-}
-
-li.s60 {
-    width: 57.714285714285715%;
-}
-
-li.s50 {
-    width: 47.714285714285715%;
-}
-
-li.s40 {
-    width: 37.714285714285715%;
-}
-
-li.s30 {
-    width: 27.714285714285715%;
-}
-
-li.s20 {
-    width: 17.714285714285715%;
-}
-
-li.s10 {
-    width: 7.714285714285714%;
 }
 
 /* ------------------------*/
@@ -643,37 +541,56 @@ ul#recommends li > p {
 /* ------------------------*/
 /*--RESPONSIVE STUFF------*/
 /* ----------------------*/
-body.respond {
+#resume {
+    /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /*text-align: center;*/
+    color: #2c3e50;
+    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.2em;
+    background-color: #f3f3f3;
+    background-image: url(../../assets/soft_wallpaper.png);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: 0px 0px;
+    color: #444;
+    height: 100%;
+    width: auto;
+    /*margin-top: 60px;*/
+}
+
+#resume.respond {
     background: #fff;
 }
 
-body.respond #sticker {
+#resume.respond #sticker {
     display: none;
 }
 
-body.respond #wrapper {
+#resume.respond #wrapper {
     margin: 0 auto;
     padding: 30px;
     background: #fff;
     box-shadow: none;
 }
 
-body.respond h2.sectionHead {
+#resume.respond h2.sectionHead {
     font-size: 15px;
     letter-spacing: -1px;
     margin: 40px 0 50px -60px;
     padding-left: 8px;
 }
 
-body.respond h2#titleName {
+#resume.respond h2#titleName {
     margin: 20px 0 10px -60px;
 }
 
-body.respond p {
+#resume.respond p {
     text-align: left;
 }
 
-body.respond #socialIcons {
+#resume.respond #socialIcons {
     height: 30px;
     margin-top: 20px;
     position: relative;
@@ -683,77 +600,77 @@ body.respond #socialIcons {
     width: 100%;
 }
 
-body.respond #bio h2 {
+#resume.respond #bio h2 {
     font-size: 12px;
 }
 
-body.respond #aboutme {
+#resume.respond #aboutme {
     padding: 0;
     background: #fff;
     max-width: 100%;
     border: none;
 }
 
-body.respond ul#seenOn li {
+#resume.respond ul#seenOn li {
     height: auto;
     line-height: 1em;
 }
 
-body.respond ul#seenOn li img {
+#resume.respond ul#seenOn li img {
     width: 96%;
     height: auto;
     padding: 2%;
 }
 
-body.respond #aboutme .imgwap {
+#resume.respond #aboutme .imgwap {
     width: 100%;
     float: none;
     text-align: center;
 }
 
-body.respond #aboutme p {
+#resume.respond #aboutme p {
     padding-left: 50px;
     float: left;
     width: 100%;
 }
 
-body.respond ul#jobs li .details,
-body.respond ul#schools li .details,
-body.respond ul#recommends li .details {
+#resume.respond ul#jobs li .details,
+#resume.respond ul#schools li .details,
+#resume.respond ul#recommends li .details {
     float: none;
     width: 100%
 }
 
-body.respond ul#jobs li p,
-body.respond ul#schools li > p,
-body.respond ul#recommends li > p {
+#resume.respond ul#jobs li p,
+#resume.respond ul#schools li > p,
+#resume.respond ul#recommends li > p {
     float: none;
     width: 100%;
     margin-bottom: 50px;
     margin-top: 10px;
 }
 
-body.respond #contactInfo,
-body.respond #emailMessage {
+#resume.respond #contactInfo,
+#resume.respond #emailMessage {
     float: none;
     width: 100%;
 }
 
-body.respond #contactform input[type="submit"] {
+#resume.respond #contactform input[type="submit"] {
     float: none;
     width: auto;
 }
 
-body.respond #contactform input,
-body.respond #contactform textarea {
+#resume.respond #contactform input,
+#resume.respond #contactform textarea {
     width: 90%;
 }
 
-body.respond #copyright {
+#resume.respond #copyright {
     margin: 60px auto;
 }
 
-body.respond #messageSent {
+#resume.respond #messageSent {
     margin-top: 20px;
 }
 

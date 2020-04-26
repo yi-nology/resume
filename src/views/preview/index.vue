@@ -28,7 +28,7 @@
                 </span>
                 </p>
             </div>
-            <img id="qrcord" :src="qrcode" alt="二维码"  width="120" />
+            <img id="qrcord" :src="qrcode" alt="二维码" width="120"/>
 
             <!--end bio-->
 
@@ -39,23 +39,32 @@
             <h2 id="tools" class="sectionHead">技能</h2>
 
             <!--SKILLS-->
-            <ul id="skills">
-                <!--////////////////////////////////////////////////////////////////////////////////////-->
-                <!--请注意，班级名称表示您的技能的百分比。 即s70 = 70％，s40 = 40％. -->
-                <!--////////////////////////////////////////////////////////////////////////////////////-->
-                <!-- <li id="skill1" class="s100"><span>.NET 框架开发（C#、ASP.net、MVC等）</span></li>
-                <li id="skill2" class="s90"><span>Java 开发（SSH、SSM框架）</span></li>
-                <li id="skill3" class="s90"><span>前端开发（JQuery、Angular、Bootstrap、ES6）</span></li>
-                <li id="skill4" class="s80"><span>Linux平台使用（CentOS、Ubuntu）</span></li>
-                <li id="skill5" class="s90"><span>NodeJS开发</span></li>
-                <li id="skill6" class="s100"><span>Android开发</span></li>
-                <li id="skill7" class="s100"><span>H5 Web APP（PhoneGap、Ionic）</span></li>
-                <li id="skill9" class="s60"><span>IOS开发</span></li>
-                <li id="skill8" class="s90"><span>数据库（SQLserver、MySQL、MongoDB、Redis）</span></li>
-                 -->
-                <li v-for="(item,index) in skill" :id="`skill`+item.sequence" :class="`s`+item.percentage" :key="index">
-                    <span>{{item.name}}</span></li>
-            </ul>
+            <!--            <ul id="skills">-->
+            <!--                &lt;!&ndash;////////////////////////////////////////////////////////////////////////////////////&ndash;&gt;-->
+            <!--                &lt;!&ndash;请注意，班级名称表示您的技能的百分比。 即s70 = 70％，s40 = 40％. &ndash;&gt;-->
+            <!--                &lt;!&ndash;////////////////////////////////////////////////////////////////////////////////////&ndash;&gt;-->
+            <!--                &lt;!&ndash; <li id="skill1" class="s100"><span>.NET 框架开发（C#、ASP.net、MVC等）</span></li>-->
+            <!--                <li id="skill2" class="s90"><span>Java 开发（SSH、SSM框架）</span></li>-->
+            <!--                <li id="skill3" class="s90"><span>前端开发（JQuery、Angular、Bootstrap、ES6）</span></li>-->
+            <!--                <li id="skill4" class="s80"><span>Linux平台使用（CentOS、Ubuntu）</span></li>-->
+            <!--                <li id="skill5" class="s90"><span>NodeJS开发</span></li>-->
+            <!--                <li id="skill6" class="s100"><span>Android开发</span></li>-->
+            <!--                <li id="skill7" class="s100"><span>H5 Web APP（PhoneGap、Ionic）</span></li>-->
+            <!--                <li id="skill9" class="s60"><span>IOS开发</span></li>-->
+            <!--                <li id="skill8" class="s90"><span>数据库（SQLserver、MySQL、MongoDB、Redis）</span></li>-->
+            <!--                 &ndash;&gt;-->
+            <!--                <li v-for="(item,index) in skill" :id="`skill`+item.sequence" :class="`s`+item.percentage" :key="index">-->
+            <!--                    <span>{{item.name}}</span></li>-->
+
+            <!--            </ul>-->
+            <div>
+                <li v-for="(item,index) in skill" class="def" :key="index">
+                    <span>{{item.name}}
+                    <el-progress :text-inside="true" :stroke-width="20" :percentage="item.percentage"
+                                 status="exception"></el-progress></span>
+                </li>
+            </div>
+
             <!-- end skills -->
             <div class="clear"></div>
 
@@ -170,9 +179,11 @@
     import './style.css';
     // import './print.css';
     // import './prettyPhoto.css'
-    import {getInfoByKeyword,createQrcode} from '@/api/resume'
+    // import './custom'
+    import {getInfoByKeyword, createQrcode} from '@/api/resume'
 
     import {Component, Prop, Vue} from 'vue-property-decorator'
+
     @Component({
         props: {
             user: Object,
@@ -327,13 +338,14 @@
                 }
             )
         }
+
         getQrcode(): void {
             const {keyword} = this.$route.params;
             // let url = "http://localhost:10080/"+keyword
 
-            createQrcode({keyword:window.location.href}).then((data: string)=>{
+            createQrcode({keyword: window.location.href}).then((data: string) => {
 
-                this.qrcode="data:image/png;base64,"+data
+                this.qrcode = "data:image/png;base64," + data
             })
         }
 
@@ -341,22 +353,5 @@
 </script>
 
 <style>
-    #resume {
-        /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        /*text-align: center;*/
-        color: #2c3e50;
-        font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        line-height: 1.2em;
-        background-color: #f3f3f3;
-        background-image: url(../../assets/soft_wallpaper.png);
-        background-repeat: repeat;
-        background-attachment: fixed;
-        background-position: 0px 0px;
-        color: #444;
-        height: 100%;
-        width: auto;
-        /*margin-top: 60px;*/
-    }
+
 </style>

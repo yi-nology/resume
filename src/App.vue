@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div v-if="this.$route.name !== `简历`" id="nav">
       <router-link to="/">首页</router-link> |
-      <router-link to="/preview">编辑</router-link>｜
+      <router-link to="/edit">编辑</router-link>｜
       <router-link to="/about">关于</router-link>
     </div>
     <router-view/>
