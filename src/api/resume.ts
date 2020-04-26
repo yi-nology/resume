@@ -6,9 +6,17 @@ function getUri(): any {
 
 export function getInfoByKeyword(data: any): any {
     return request({
-        url: getUri()+'/getInfoByKeyword',
+        url: getUri() + '/getInfoByKeyword',
         method: 'get',
         params: data
+    })
+}
+
+export function createKeyword(data: any): any {
+    return request({
+        url: getUri() + 'createKeyword',
+        method: 'post',
+        data
     })
 }
 
@@ -19,13 +27,7 @@ export function getInfoByKeyword(data: any): any {
 //         data
 //     })
 // }
-// export function createKeyword (data:any):any {
-//     return request({
-//         url: '/v1/resume/createKeyword',
-//         method: 'get',
-//         data
-//     })
-// }
+
 //
 // export function updateUser (data:any):any {
 //     return request({

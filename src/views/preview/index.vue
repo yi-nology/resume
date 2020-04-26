@@ -196,7 +196,7 @@
         }
     })
 
-    export default class App extends Vue {
+    export default class Preview extends Vue {
         @Prop() private user?: Record<string, any>;
         @Prop() private works?: Record<string, any>;
         @Prop() private education?: Record<string, any>;
