@@ -13,7 +13,7 @@ interface User {
     describe: string;
     sex: boolean;
     status: string;
-    birthday: string;
+    age: string;
     photo: string;
     email: string;
     wechat: string;
