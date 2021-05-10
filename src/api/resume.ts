@@ -4,14 +4,39 @@ function getUri(): any {
     return '/v1/resume/'
 }
 
+// 后端为真实
+// export function getInfoByKeyword(data: any): any {
+//     return request({
+//         url: getUri() + 'getInfoByKeyword',
+//         method: 'get',
+//         params: data
+//     })
+// }
+
 export function getInfoByKeyword(data: any): any {
+    const {keyword} = data
     return request({
-        url: getUri() + '/getInfoByKeyword',
+        url: getUri() + 'getInfoByKeyword'+"%3Fkeyword%3D"+keyword,
         method: 'get',
-        params: data
+        // params: data
     })
 }
 
+// 后端为真实
+// export function createQrcode(data: any): any {
+//     return request({
+//         url: getUri() + 'createQrcode',
+//         method: 'post',
+//         data
+//     })
+// }
+// 后端为github
+export function createQrcode(data: any): any {
+    return request({
+        url: getUri() + 'createQrcode',
+        method: 'get'
+    })
+}
 export function createKeyword(data: any): any {
     return request({
         url: getUri() + 'createKeyword',
@@ -19,7 +44,6 @@ export function createKeyword(data: any): any {
         data
     })
 }
-
 // export function getInfoByCode (data:any):any {
 //     return request({
 //         url:'/v1/resume/getInfoByCode',
@@ -103,11 +127,4 @@ export function createKeyword(data: any): any {
 // }
 //
 
-export function createQrcode(data: any): any {
-    return request({
-        url: getUri() + 'createQrcode',
-        method: 'post',
-        data
-    })
-}
 
